@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="To1y5">
+  <meta name="keywords" content="网络安全,python,脚本,web安全,php">
+  
+    <meta name="description" content="概述​	本篇笔记是在笔者刷python二级题目的时候，一边刷题一边总结的随笔，希望可以位后续的要备考的同学提供一点微薄的帮助。 ​	因为是随手记的，格式和顺序可能会不太完美。 选择题主要包括以下内容：  数据结构与算法 python基础 软件测试相关 数据库设计基础 软件工程基础  分值分布：  算法，软件工程，软件测试，数据库设计（15左右）  这部分内容，没有学过相关专业的同学死记硬背即可，不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python2级速通">
+<meta property="og:url" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/index.html">
+<meta property="og:site_name" content="To1y5&#39;s Blog">
+<meta property="og:description" content="概述​	本篇笔记是在笔者刷python二级题目的时候，一边刷题一边总结的随笔，希望可以位后续的要备考的同学提供一点微薄的帮助。 ​	因为是随手记的，格式和顺序可能会不太完美。 选择题主要包括以下内容：  数据结构与算法 python基础 软件测试相关 数据库设计基础 软件工程基础  分值分布：  算法，软件工程，软件测试，数据库设计（15左右）  这部分内容，没有学过相关专业的同学死记硬背即可，不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134853630.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134937908.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134942614.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134950746.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135059119.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135103898.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135110219.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135114557.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135118525.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135123564.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135128947.png">
+<meta property="og:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135134747.png">
+<meta property="article:published_time" content="2023-03-25T07:28:19.000Z">
+<meta property="article:modified_time" content="2023-03-25T06:14:38.551Z">
+<meta property="article:author" content="To1y5">
+<meta property="article:tag" content="note">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134853630.png">
+  
+  
+  
+  <title>python2级速通 - To1y5&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>To1y5&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="python2级速通"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-25 15:28" pubdate>
+          2023年3月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          28 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python2级速通</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>​	本篇笔记是在笔者刷python二级题目的时候，一边刷题一边总结的随笔，希望可以位后续的要备考的同学提供一点微薄的帮助。</p>
+<p>​	因为是随手记的，格式和顺序可能会不太完美。</p>
+<h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><p>主要包括以下内容：</p>
+<ul>
+<li>数据结构与算法</li>
+<li>python基础</li>
+<li>软件测试相关</li>
+<li>数据库设计基础</li>
+<li>软件工程基础</li>
+</ul>
+<p>分值分布：</p>
+<ul>
+<li>算法，软件工程，软件测试，数据库设计（15左右）</li>
+</ul>
+<p>这部分内容，没有学过相关专业的同学死记硬背即可，不用花太多时间在上面，刷题的时候错题标记一下然后再刷一遍错题即可。</p>
+<ul>
+<li>python基础（15左右）</li>
+</ul>
+<p>包括的知识点有，数据类型特点，函数的特点和使用，和对运行流程结果的判断，这部分内容就不要死记硬背了，这部分内容要结合做操作题的经验，理解性记忆。</p>
+<p>在做判断运行流程结果的题目时，注意以下几点:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-built_in">input</span>()函数返回的是字符串，他在对返回的数据处理时有没有进行转换。<br><span class="hljs-number">2.</span>考察输出结果时，一定要看清楚输出的是什么，如果<span class="hljs-built_in">print</span>()里面是个函数，就注意看函数有没有返回值,返回值是什么数据类型。<br><span class="hljs-number">3.</span>注意代码缩进层次结构，哪些代码会被运行，哪些不会，要捋清楚，他经常会写一些不会被运行的部分来迷惑你。<br></code></pre></td></tr></table></figure>
+
+<p>其他的内容，像什么做什么需要哪个函数，在什么什么情况该用哪个语句，这些题目不需要花时间去刷，你在刷后面操作题的时候这些内容都已经理解记忆在脑子里了。</p>
+<ul>
+<li>pyhon背景和生态（10左右）</li>
+</ul>
+<p>就是问哪些第三方库是干什么的，在哪个领域有哪些库支持</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">开发用户界面(GUI):pyGTK,pygobject，PyQt<br>数据分析:seabom,mayavi2,numpy,scipy,pandas,matplotlib<br>web开发:pyramid,flask,django<br>文本处理:pdfminer,openpyxl<br>游戏开发:pygame<br>图像处理:PIL,Arcade<br>机器学习:mxnet,Tensorflow,PyTorch,Scikit-learn<br>网络爬虫:scrapy,requests<br>用来安装第三方库的工具是pip，把py脚本打包成可执行文件的是pyinstaller<br></code></pre></td></tr></table></figure>
+
+<p>其次就是python作为一个解释性语言的一些特点，和静态编译语言的一些区别对照之类的</p>
+<p><strong>选择题一定要保证在25分以上</strong> ！！</p>
+<h1 id="操作题"><a href="#操作题" class="headerlink" title="操作题"></a>操作题</h1><h2 id="三个模块："><a href="#三个模块：" class="headerlink" title="三个模块："></a>三个模块：</h2><ul>
+<li>基础操作：主要考点，格式化输出，对结构控制语句的掌握</li>
+<li>简单应用：turtle库，列表，字典的处理，排序,文件读取写入</li>
+<li>综合应用：文件读取写入，内容遍历，排序。在简单应用基础上增加要求</li>
+</ul>
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><ul>
+<li><p>{:&lt;填充&gt;&lt;对齐&gt;&lt;宽度&gt;&lt;,(千分位分隔符)&gt;&lt;.精度&gt;&lt;类型&gt;}</p>
+</li>
+<li><p>&lt;左对齐   &gt;右对齐  ^居中对齐</p>
+</li>
+<li><p>.2f 两位小数</p>
+</li>
+<li><p>x 十六进制输出 b二进制 d十进制 o八进制</p>
+</li>
+</ul>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134853630.png" srcset="/img/loading.gif" lazyload alt="image-20230325134853630"></p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134937908.png" srcset="/img/loading.gif" lazyload alt="image-20230325134937908"></p>
+<p>false：</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134942614.png" srcset="/img/loading.gif" lazyload alt="image-20230325134942614"></p>
+<p>true：(细节就是多了一个空格….挺无语的避免细节扣分)</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325134950746.png" srcset="/img/loading.gif" lazyload alt="image-20230325134950746"></p>
+<p>例题1：</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135059119.png" srcset="/img/loading.gif" lazyload alt="image-20230325135059119"></p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135103898.png" srcset="/img/loading.gif" lazyload alt="image-20230325135103898"></p>
+<ul>
+<li><p>中文字符取值范围：’\ue400’ 到’\u9fff’</p>
+</li>
+<li><p>大写方法name.upper(),小写name.lower()</p>
+</li>
+</ul>
+<p>例题2:</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135110219.png" srcset="/img/loading.gif" lazyload alt="image-20230325135110219"></p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135114557.png" srcset="/img/loading.gif" lazyload alt="image-20230325135114557"></p>
+<p>例题3:</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135118525.png" srcset="/img/loading.gif" lazyload alt="image-20230325135118525"></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">list</span>.sort( key=<span class="hljs-literal">None</span>, reverse=<span class="hljs-literal">False</span>)<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135123564.png" srcset="/img/loading.gif" lazyload alt="image-20230325135123564"></p>
+<p>lambda:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python">L=[(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>),(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-number">1</span>),(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">3</span>),(<span class="hljs-string">&#x27;d&#x27;</span>,<span class="hljs-number">4</span>)]<br><span class="hljs-comment">#2、利用参数 cmp 排序</span><br><span class="hljs-built_in">sorted</span>(L, cmp=<span class="hljs-keyword">lambda</span> x,y:cmp(x[<span class="hljs-number">1</span>],y[<span class="hljs-number">1</span>]))<br> 结果：<br>[(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">1</span>), (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-number">2</span>), (<span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-number">3</span>), (<span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-number">4</span>)]<br><span class="hljs-comment">#3、利用参数 key 排序</span><br><span class="hljs-built_in">sorted</span>(L, key=<span class="hljs-keyword">lambda</span> x:x[<span class="hljs-number">1</span>])<br><span class="hljs-comment">#结果：</span><br>[(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-number">1</span>), (<span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-number">2</span>), (<span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-number">3</span>), (<span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-number">4</span>)]<br><span class="hljs-comment">#4、按年龄升序</span><br>students = [(<span class="hljs-string">&#x27;john&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">15</span>), (<span class="hljs-string">&#x27;jane&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">12</span>), (<span class="hljs-string">&#x27;dave&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">10</span>)]<br><span class="hljs-built_in">sorted</span>(students, key=<span class="hljs-keyword">lambda</span> s: s[<span class="hljs-number">2</span>])<br> 结果：<br>[(<span class="hljs-string">&#x27;dave&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">10</span>), (<span class="hljs-string">&#x27;jane&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">12</span>), (<span class="hljs-string">&#x27;john&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">15</span>)]<br><span class="hljs-comment">#5、按年龄降序</span><br><span class="hljs-built_in">sorted</span>(students, key=<span class="hljs-keyword">lambda</span> s: s[<span class="hljs-number">2</span>], reverse=<span class="hljs-literal">True</span>)<br><span class="hljs-comment">#结果：</span><br>[(<span class="hljs-string">&#x27;john&#x27;</span>, <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-number">15</span>), (<span class="hljs-string">&#x27;jane&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">12</span>), (<span class="hljs-string">&#x27;dave&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-number">10</span>)]<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="计数排序问题"><a href="#计数排序问题" class="headerlink" title="计数排序问题"></a>计数排序问题</h2><p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135128947.png" srcset="/img/loading.gif" lazyload alt="image-20230325135128947"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"> D[vote[:-<span class="hljs-number">1</span>]]=D.get(vote[:-<span class="hljs-number">1</span>],<span class="hljs-number">0</span>)+<span class="hljs-number">1</span><br>        NUM+=<span class="hljs-number">1</span><br>l = <span class="hljs-built_in">list</span>(D.items())<br>l.sort(key=<span class="hljs-keyword">lambda</span> s:s[<span class="hljs-number">1</span>],reverse=<span class="hljs-literal">True</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>例题4：</p>
+<p><img src="/2023/03/25/python%E4%BA%8C%E7%BA%A7%E9%80%9F%E9%80%9A/image-20230325135134747.png" srcset="/img/loading.gif" lazyload alt="image-20230325135134747"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">img = [<span class="hljs-number">0.244</span>, <span class="hljs-number">0.832</span>, <span class="hljs-number">0.903</span>, <span class="hljs-number">0.145</span>, <span class="hljs-number">0.26</span>, <span class="hljs-number">0.452</span>]<br><span class="hljs-built_in">filter</span> = [<span class="hljs-number">0.1</span>,<span class="hljs-number">0.8</span>,<span class="hljs-number">0.1</span>]<br>res = []<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(img)-<span class="hljs-number">2</span>):<br>    k=<span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>):<br>        k += <span class="hljs-built_in">filter</span>[j]*img[i+j]<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;k=&#123;:.3f&#125;,filter[&#123;&#125;]=&#123;:.3f&#125;,img[&#123;&#125;+&#123;&#125;]=&#123;:.3f&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(k,j,<span class="hljs-built_in">filter</span>[j],i,j,img[i+j]))<br>    res.append(k)<br><span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> res:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#123;:&lt;10.3f&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(r),end = <span class="hljs-string">&#x27;&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
+
+<p>开始半天没看懂这纱暖题目什么吊意思，大概就是说，要算四个向量内积，从lt1的第一个元素开始，然后还要把计算过程打印出来。挺nt的就是说。专门标注一下。</p>
+<h2 id="turtle库"><a href="#turtle库" class="headerlink" title="turtle库"></a>turtle库</h2><p>常用方法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">turtle.fd(&lt;前进多少个单位&gt;)<span class="hljs-comment">#前进</span><br>turtle.seth()<span class="hljs-comment">#调整方向</span><br><span class="hljs-comment">#seth(90)就是从逆时针调整九十度，seth(-90)就是顺时针</span><br><span class="hljs-comment">#相当于以当前位置为原点画一个坐标轴</span><br>turtle.penup()<span class="hljs-comment">#提起笔:动时不会有痕迹</span><br>turtle.pendown()<span class="hljs-comment">#落笔:移动时候开始有痕迹</span><br>turtle.pencolor()<span class="hljs-comment">#调整画笔颜色</span><br>turtle.circle()<span class="hljs-comment">#画圆，参数是半径</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="jieba库"><a href="#jieba库" class="headerlink" title="jieba库"></a>jieba库</h2><p>常用的就一条：</p>
+<p><code>s.lcut(str)</code></p>
+<p>用来将一个字符串里分词，返回的数据是一个列表</p>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作:"></a>文件操作:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">f = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;文件名&#x27;</span>，<span class="hljs-string">&#x27;打开模式&#x27;</span>)<span class="hljs-comment">#r模式是读，w模式是写</span><br><span class="hljs-comment">#这个时候f作为对象名字，调用方法时用f.方法名(参数)</span><br>f.read()<br><span class="hljs-comment">#读取文件内容，返回字符串，如果是b模式（二进制模式）打开，就是二进制数据内容，一般打开图片的时候采用b模式,二级题目里基本都是读取文本内容然后处理</span><br>f.readlines()<span class="hljs-comment">#按行读取，返回的是一个列表，每一行对应列表里一个元素</span><br>f.readline()<span class="hljs-comment">#只读取一行</span><br>f.write()<span class="hljs-comment">#写入内容</span><br></code></pre></td></tr></table></figure>
+
+<p>一般文件操作都会配合for循环使用，因为大部分的题目都是让你在文本里筛选出符合条件的内容，一般流程如下：</p>
+<ol>
+<li>打开文件后读取所有行<code>readlines</code></li>
+<li>然后<code>for ... in ...:</code>去遍历每一行的内容</li>
+<li>再用if语句判断具体条件</li>
+<li>然后执行下一步操作，计数或者写入</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/note/">#note</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>python2级速通</div>
+      <div>http://example.com/2023/03/25/python二级速通/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>To1y5</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/25/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
