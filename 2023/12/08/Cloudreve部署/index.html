@@ -26,33 +26,33 @@
 <meta property="og:site_name" content="To1y5&#39;s Blog">
 <meta property="og:description" content="Cloudreve部署Linux专业课 期末大作业 Cloudreve是一个由Go语言开发的网盘系统，可以快速部署在服务器上，支持不同的云存储平台。本次作业我们小组将基于Centos7使用Cloudreve搭建一个以ECS云盘为存储平台的小团体的网盘系统。 1.1 环境准备需要准备的内容有：  Go语言开发环境 安装Node.js 安装Yarn 安装git  Cloudreve程序中内置了一个We">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://noeplex.com/image-20231208165511910-1702048792490-20.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208165958797-1702048792490-21.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208170852664-1702048792490-22.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208172633648.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208172754511-1702048792490-23.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173053180.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173233575.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173432216.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173516937.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173541256-1702048792490-24.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208173818483.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208180753853.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208180733294.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208181120297.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208225643025-1702048792490-25.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208225711848.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208225802195.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208225806921.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208225835962.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208230226316-1702048792490-26.png">
-<meta property="og:image" content="https://noeplex.com/image-20231208230630730-1702048792490-27.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208165511910-1702048792490-20.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208165958797-1702048792490-21.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208170852664-1702048792490-22.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208172633648.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208172754511-1702048792490-23.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173053180.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173233575.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173432216.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173516937.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173541256-1702048792490-24.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173818483.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208180753853.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208180733294.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208181120297.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225643025-1702048792490-25.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225711848.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225802195.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225806921.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225835962.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208230226316-1702048792490-26.png">
+<meta property="og:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208230630730-1702048792490-27.png">
 <meta property="article:published_time" content="2023-12-08T15:18:00.000Z">
 <meta property="article:modified_time" content="2026-09-11T15:58:06.306Z">
 <meta property="article:author" content="To1y5">
 <meta property="article:tag" content="网络安全,python,脚本,web安全,php">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://noeplex.com/image-20231208165511910-1702048792490-20.png">
+<meta name="twitter:image" content="https://noeplex.com/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208165511910-1702048792490-20.png">
   
   
   
@@ -418,7 +418,7 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208165511910-1702048792490-20.png" srcset="/img/loading.gif" lazyload alt="image-20231208165511910"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208165511910-1702048792490-20.png" srcset="/img/loading.gif" lazyload alt="image-20231208165511910"></p>
 <ol start="2">
 <li>解压安装包</li>
 </ol>
@@ -433,19 +433,19 @@
 <p>在其底部添加</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">export PATH=$PATH:/usr/local/go/bin<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208165958797-1702048792490-21.png" srcset="/img/loading.gif" lazyload alt="image-20231208165958797"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208165958797-1702048792490-21.png" srcset="/img/loading.gif" lazyload alt="image-20231208165958797"></p>
 <ol start="4">
 <li>查看go版本</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">go version<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208170852664-1702048792490-22.png" srcset="/img/loading.gif" lazyload alt="image-20231208170852664"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208170852664-1702048792490-22.png" srcset="/img/loading.gif" lazyload alt="image-20231208170852664"></p>
 <p>确保已经正确安装go环境。</p>
 <h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>Node.js是JavaScript的一个免费开源跨平台的一个运行环境，因为Cloudreve需要Node.js的支持，所以我们需要在centos7中安装Node.js。</p>
 <ol>
 <li>在官网找到软件包</li>
 </ol>
-<p><img src="/image-20231208172633648.png" srcset="/img/loading.gif" lazyload alt="image-20231208172633648"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208172633648.png" srcset="/img/loading.gif" lazyload alt="image-20231208172633648"></p>
 <p>使用wget下载</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://nodejs.org/download/release/latest-v16.x/node-v16.20.2-linux-x64.tar.gz<br></code></pre></td></tr></table></figure>
 
@@ -454,7 +454,7 @@
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">tar -xvf node-v16.20.2-linux-x64.tar.gz<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208172754511-1702048792490-23.png" srcset="/img/loading.gif" lazyload alt="image-20231208172754511"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208172754511-1702048792490-23.png" srcset="/img/loading.gif" lazyload alt="image-20231208172754511"></p>
 <ol start="3">
 <li>移动目录</li>
 </ol>
@@ -467,38 +467,38 @@
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">export NODEJS=/usr/local/node-v16.20.2-linux-x64<br>export PATH=$PATH:$NODEJS/bin<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208173053180.png" srcset="/img/loading.gif" lazyload alt="image-20231208173053180"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173053180.png" srcset="/img/loading.gif" lazyload alt="image-20231208173053180"></p>
 <p>安装成功</p>
-<p><img src="/image-20231208173233575.png" srcset="/img/loading.gif" lazyload alt="image-20231208173233575"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173233575.png" srcset="/img/loading.gif" lazyload alt="image-20231208173233575"></p>
 <h3 id="安装Yarn"><a href="#安装Yarn" class="headerlink" title="安装Yarn"></a>安装Yarn</h3><ol>
 <li>添加Yarn仓库</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208173432216.png" srcset="/img/loading.gif" lazyload alt="image-20231208173432216"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173432216.png" srcset="/img/loading.gif" lazyload alt="image-20231208173432216"></p>
 <ol start="2">
 <li>安装Yarn</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y yarn<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208173516937.png" srcset="/img/loading.gif" lazyload alt="image-20231208173516937"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173516937.png" srcset="/img/loading.gif" lazyload alt="image-20231208173516937"></p>
 <ol start="3">
 <li>安装完成检查版本</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yarn --version<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208173541256-1702048792490-24.png" srcset="/img/loading.gif" lazyload alt="image-20231208173541256"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173541256-1702048792490-24.png" srcset="/img/loading.gif" lazyload alt="image-20231208173541256"></p>
 <h3 id="安装git工具"><a href="#安装git工具" class="headerlink" title="安装git工具"></a>安装git工具</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y git<br></code></pre></td></tr></table></figure>
 
 <h2 id="1-2-开始构建"><a href="#1-2-开始构建" class="headerlink" title="1.2 开始构建"></a>1.2 开始构建</h2><h3 id="克隆代码"><a href="#克隆代码" class="headerlink" title="克隆代码"></a>克隆代码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone --recurse-submodules https://github.com/cloudreve/Cloudreve.git<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208173818483.png" srcset="/img/loading.gif" lazyload alt="image-20231208173818483"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208173818483.png" srcset="/img/loading.gif" lazyload alt="image-20231208173818483"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">签出要编译的版本</span><br>git checkout 3.x.x<br></code></pre></td></tr></table></figure>
 
 <h3 id="构建静态资源"><a href="#构建静态资源" class="headerlink" title="构建静态资源"></a>构建静态资源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入前端子模块</span><br>cd assets<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装依赖</span><br>yarn install<br><span class="hljs-meta prompt_"># </span><span class="language-bash">开始构建</span><br>yarn run build<br><span class="hljs-meta prompt_"># </span><span class="language-bash">构建完成后删除映射文件</span><br>cd build<br>find . -name &quot;*.map&quot; -type f -delete<br><span class="hljs-meta prompt_"># </span><span class="language-bash">返回项目主目录打包静态资源</span><br>cd ../../<br>zip -r - assets/build &gt;assets.zip<br></code></pre></td></tr></table></figure>
 
-<p><img src="/image-20231208180753853.png" srcset="/img/loading.gif" lazyload alt="image-20231208180753853"></p>
-<p><img src="/image-20231208180733294.png" srcset="/img/loading.gif" lazyload alt="image-20231208180733294"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208180753853.png" srcset="/img/loading.gif" lazyload alt="image-20231208180753853"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208180733294.png" srcset="/img/loading.gif" lazyload alt="image-20231208180733294"></p>
 <h3 id="编译项目"><a href="#编译项目" class="headerlink" title="编译项目"></a>编译项目</h3><p>获得当前版本号</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">export COMMIT_SHA=$(git rev-parse --short HEAD)<br>export VERSION=$(git describe --tags)<br></code></pre></td></tr></table></figure>
 
@@ -506,22 +506,22 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">go build -a -o cloudreve -ldflags &quot;-X &#x27;github.com/cloudreve/Cloudreve/v3/pkg/conf.BackendVersion=$VERSION&#x27; -X &#x27;github.com/cloudreve/Cloudreve/v3/pkg/conf.LastCommit=$COMMIT_SHA&#x27;&quot;<br></code></pre></td></tr></table></figure>
 
 <p>首次编译时，Go 会下载相关依赖库。</p>
-<p><img src="/image-20231208181120297.png" srcset="/img/loading.gif" lazyload alt="image-20231208181120297"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208181120297.png" srcset="/img/loading.gif" lazyload alt="image-20231208181120297"></p>
 <p>编译完成之后，在项目根目录生成最终的可执行文件<code>cloudreve</code></p>
 <h2 id="1-3-启动-Cloudreve"><a href="#1-3-启动-Cloudreve" class="headerlink" title="1.3 启动 Cloudreve"></a>1.3 启动 Cloudreve</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">赋予执行权限</span><br>chmod +x ./cloudreve<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动 Cloudreve</span><br>./cloudreve<br></code></pre></td></tr></table></figure>
 
 <p>Cloudreve 默认会监听<code>5212</code>端口。在浏览器中访问<code>http://服务器IP:5212</code>进入 Cloudreve。</p>
-<p><img src="/image-20231208225643025-1702048792490-25.png" srcset="/img/loading.gif" lazyload alt="image-20231208225643025"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225643025-1702048792490-25.png" srcset="/img/loading.gif" lazyload alt="image-20231208225643025"></p>
 <h2 id="1-4-完成"><a href="#1-4-完成" class="headerlink" title="1.4 完成"></a>1.4 完成</h2><p>访问IP:5212端口，保存初次启动Cloudreve的默认密码登录web端后台</p>
-<p><img src="/image-20231208225711848.png" srcset="/img/loading.gif" lazyload alt="image-20231208225711848"></p>
-<p><img src="/image-20231208225802195.png" srcset="/img/loading.gif" lazyload alt="image-20231208225802195"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225711848.png" srcset="/img/loading.gif" lazyload alt="image-20231208225711848"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225802195.png" srcset="/img/loading.gif" lazyload alt="image-20231208225802195"></p>
 <p>设置存储空间和用户组：</p>
-<p><img src="/image-20231208225806921.png" srcset="/img/loading.gif" lazyload alt="image-20231208225806921"></p>
-<p><img src="/image-20231208225835962.png" srcset="/img/loading.gif" lazyload alt="image-20231208225835962"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225806921.png" srcset="/img/loading.gif" lazyload alt="image-20231208225806921"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208225835962.png" srcset="/img/loading.gif" lazyload alt="image-20231208225835962"></p>
 <p>Cloudreve作为一个云盘系统，可以选择本机存储，从机存储，七牛云，或者阿里云OSS对象存储等多种存储方式</p>
-<p><img src="/image-20231208230226316-1702048792490-26.png" srcset="/img/loading.gif" lazyload alt="image-20231208230226316"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208230226316-1702048792490-26.png" srcset="/img/loading.gif" lazyload alt="image-20231208230226316"></p>
 <p>并且还拥有创建分享链接的功能</p>
-<p><img src="/image-20231208230630730-1702048792490-27.png" srcset="/img/loading.gif" lazyload alt="image-20231208230630730"></p>
+<p><img src="/2023/12/08/Cloudreve%E9%83%A8%E7%BD%B2/image-20231208230630730-1702048792490-27.png" srcset="/img/loading.gif" lazyload alt="image-20231208230630730"></p>
 
                 
               </div>
