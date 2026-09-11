@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="To1y5">
+  <meta name="keywords" content="网络安全,python,脚本,web安全,php">
+  
+    <meta name="description" content="样本是官方 Typora 1.14.9 (build 7785)，Developer ID Abner Lee (9HWK5273G4)，公证过，Hardened Runtime 开着。激活不在前端 JS 里，而在原生类 LicenseManager &#x2F; Crypto。 结论先放前面：服务端 RSA 只保护「这次激活事务」，不保护「这台机器现在能不能用」。 启动时只看本地 AES 字典里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typora破解">
+<meta property="og:url" content="https://noeplex.com/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/index.html">
+<meta property="og:site_name" content="To1y5&#39;s Blog">
+<meta property="og:description" content="样本是官方 Typora 1.14.9 (build 7785)，Developer ID Abner Lee (9HWK5273G4)，公证过，Hardened Runtime 开着。激活不在前端 JS 里，而在原生类 LicenseManager &#x2F; Crypto。 结论先放前面：服务端 RSA 只保护「这次激活事务」，不保护「这台机器现在能不能用」。 启动时只看本地 AES 字典里">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://noeplex.com/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-overview.png">
+<meta property="article:published_time" content="2026-09-11T16:20:00.000Z">
+<meta property="article:modified_time" content="2026-09-11T16:21:53.413Z">
+<meta property="article:author" content="To1y5">
+<meta property="article:tag" content="Typora">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="reverse">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://noeplex.com/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-overview.png">
+  
+  
+  
+  <title>Typora破解 - To1y5&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"noeplex.com","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>To1y5&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Typora破解"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-09-12 00:20" pubdate>
+          2026年9月12日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Typora破解</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>样本是官方 <strong>Typora 1.14.9 (build 7785)</strong>，Developer ID <code>Abner Lee (9HWK5273G4)</code>，公证过，Hardened Runtime 开着。激活不在前端 JS 里，而在原生类 <code>LicenseManager</code> &#x2F; <code>Crypto</code>。</p>
+<p>结论先放前面：<strong>服务端 RSA 只保护「这次激活事务」，不保护「这台机器现在能不能用」。</strong> 启动时只看本地 AES 字典里有没有 <code>email</code> + <code>license</code> 两个 key，再加上内存里一个 ObjC 布尔。会看二进制的人，绕过是小时级，不是「需要 RSA 私钥」级。</p>
+<p>下面按机制、再按四种方式写。每种方式拆成 <strong>原理</strong> 和 <strong>过程</strong>。</p>
+<p><img src="/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-overview.png" srcset="/img/loading.gif" lazyload alt="授权判定的两条路径"></p>
+<h2 id="样本和入口"><a href="#样本和入口" class="headerlink" title="样本和入口"></a>样本和入口</h2><table>
+<thead>
+<tr>
+<th>项</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>版本</td>
+<td>1.14.9 &#x2F; 7785</td>
+</tr>
+<tr>
+<td>bundle</td>
+<td><code>abnerworks.Typora</code></td>
+</tr>
+<tr>
+<td>二进制</td>
+<td>Mach-O universal，x86_64 + arm64</td>
+</tr>
+<tr>
+<td>Hardened Runtime</td>
+<td>开（<code>flags=0x10000 runtime</code>）</td>
+</tr>
+<tr>
+<td>关键 entitlements</td>
+<td><code>allow-dyld-environment-variables</code>、<code>allow-jit</code>、<code>allow-unsigned-executable-memory</code></td>
+</tr>
+</tbody></table>
+<p><code>allow-dyld-environment-variables=true</code> 等于主动放行 <code>DYLD_INSERT_LIBRARIES</code>。Hardened Runtime 在这里被自己拆掉一角。</p>
+<p>授权 UI 是 <code>license.html</code> &#x2F; Welcome，JS 只负责把输入丢给 native：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-title class_">Setting</span>.<span class="hljs-title function_">invokeWithCallback</span>(<span class="hljs-string">&quot;addLicense&quot;</span> | <span class="hljs-string">&quot;offlineActivation&quot;</span> | <span class="hljs-string">&quot;license.machineCode&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>真正干活的是 <code>-[LicenseManager activate:with:force:callback:]</code>。</p>
+<h2 id="机制：写入有-RSA，启动没有"><a href="#机制：写入有-RSA，启动没有" class="headerlink" title="机制：写入有 RSA，启动没有"></a>机制：写入有 RSA，启动没有</h2><h3 id="联网-离线激活（有验签）"><a href="#联网-离线激活（有验签）" class="headerlink" title="联网 &#x2F; 离线激活（有验签）"></a>联网 &#x2F; 离线激活（有验签）</h3><ol>
+<li>邮箱正则。</li>
+<li><code>quickValidateLicense:</code> —— 只做格式和弱校验和，能过这一步不代表服务器认。</li>
+<li>POST JSON 到 <code>store.typora.io</code> 或 <code>dian.typora.com.cn</code> 的 <code>/api/client/activate</code>。</li>
+<li>响应 <code>code==0</code> 之后，<code>writeLicenseInfo:with:from:</code> 才走 <code>verifySig:</code>：RSA-2048 &#x2F; SHA-256，公钥嵌在二进制里。</li>
+<li>通过才把 <code>_hasLicense = YES</code>，AES 写本地文件，再通知 WebView。</li>
+</ol>
+<p>离线激活把用户粘贴的 JSON 送进同一条 <code>writeLicenseInfo</code>，所以<strong>伪造离线包过不了</strong>，一样要合法签名。</p>
+<p>序列号在客户端长这样：</p>
+<ul>
+<li>正则 <code>^([A-Z0-9]{6}-){3}[A-Z0-9]{6}$</code></li>
+<li>字母表去掉 0&#x2F;1&#x2F;I&#x2F;O：<code>L23456789ABCDEFGHJKMNPQRSTUVWXYZ</code></li>
+<li>去掉 <code>-</code> 后 24 字符，校验和只覆盖前 16 字符的奇偶位</li>
+</ul>
+<p>这只决定「激活按钮能不能点」。checksum 合法的码，服务器照样可以拒。</p>
+<h3 id="每次启动（无验签）"><a href="#每次启动（无验签）" class="headerlink" title="每次启动（无验签）"></a>每次启动（无验签）</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">LicenseManager.<span class="hljs-literal">start</span><br>    readLicense<span class="hljs-literal">Inf</span>o          ← 只解密本地文件，不调用 verifySig:<br>    未授权则 showWelcome<br>    renew                    ← 联网续期，失败不撤本地授权<br></code></pre></td></tr></table></figure>
+
+<p><code>readLicenseInfo</code> 的判定可以写成一句：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns">licensed = <span class="hljs-punctuation">(</span>dict[<span class="hljs-string">&quot;email&quot;</span>] != nil<span class="hljs-punctuation">)</span> &amp;&amp; <span class="hljs-punctuation">(</span>dict[<span class="hljs-string">&quot;license&quot;</span>] != nil<span class="hljs-punctuation">)</span><br>_hasLicense = @<span class="hljs-punctuation">(</span>licensed<span class="hljs-punctuation">)</span><br></code></pre></td></tr></table></figure>
+
+<p>没有 RSA，没有 MAC，没有把设备字段再核一遍。字典里塞进这两个 key 再加密写回，下次启动就是已授权。</p>
+<p><img src="/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-crypto.png" srcset="/img/loading.gif" lazyload alt="本地授权文件怎么来、怎么判"></p>
+<p>设备指纹和文件路径：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart">rawMachineId = <span class="hljs-title class_">IORegistry</span> 的 <span class="hljs-title class_">IOPlatformUUID</span><br>fingerPrint  = <span class="hljs-title function_">b64</span>(<span class="hljs-title class_">SHA256</span>(uuid))[:<span class="hljs-number">10</span>] ，按字符集 /=+- 切开，用 a 拼接<br>路径         = ~/<span class="hljs-title class_">Library</span>/<span class="hljs-title class_">Application</span> <span class="hljs-title class_">Support</span>/abnerworks.<span class="hljs-title class_">Typora</span>/.&lt;fingerPrint&gt;<br></code></pre></td></tr></table></figure>
+
+<p>本地加密：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dart">key  = <span class="hljs-title class_">SHA256</span>(<span class="hljs-title class_">IOPlatformUUID</span> || <span class="hljs-string">&quot;typora-license&quot;</span>)   # <span class="hljs-number">32</span> bytes<br><span class="hljs-title class_">CCCrypt</span> AES-<span class="hljs-number">256</span>, ECB, <span class="hljs-title class_">PKCS7</span>, IV = NULL<br>明文 = <span class="hljs-title class_">NSKeyedArchiver</span>(<span class="hljs-title class_">NSMutableDictionary</span>)<br></code></pre></td></tr></table></figure>
+
+<p>ECB、无 HMAC、密钥完全由公开硬件 UUID + 硬编码盐导出。换机器拷贝文件会解不开，<strong>在本机等于可任意重加密</strong>。</p>
+<h3 id="运行时真正拦功能的点"><a href="#运行时真正拦功能的点" class="headerlink" title="运行时真正拦功能的点"></a>运行时真正拦功能的点</h3><p>关于窗口上的 <code>window._options.hasLicense = true</code> 只是外观。试用过期之后，锁新标签、锁空文档的是 native：</p>
+<p><img src="/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-runtime.png" srcset="/img/loading.gif" lazyload alt="运行时强制点"></p>
+<p><code>-[LicenseManager hasLicense]</code> 读 ivar <code>_hasLicense</code>（偏移 <code>0x18</code>）。ivar 为 nil 时默认返回 YES，<code>init</code> 里大约 50 秒后才会写成 <code>kCFBooleanFalse</code>。正常启动 <code>readLicenseInfo</code> 会立刻写成 NSNumber，这个窗口用不上，但默认值偏「已授权」。</p>
+<p><code>-[LicenseManager cannotContonueUse:]</code> 方法名就少写一个 i，hook &#x2F; 补丁必须一字不差：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-keyword">if</span> (!force &amp;&amp; !_appStarted) <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;<br><span class="hljs-keyword">if</span> ([<span class="hljs-keyword">self</span> hasLicense]) <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;<br><span class="hljs-keyword">return</span> [<span class="hljs-keyword">self</span> dayRemainsFrom:<span class="hljs-number">20</span>] &lt; <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>调用点：</p>
+<ul>
+<li><code>ControllerCommands setup</code>（force&#x3D;1）—— JS 命令通道</li>
+<li><code>TyWindowController newTab:</code>（force&#x3D;0）</li>
+<li><code>Document makeWindowControllers</code>（空文档 force&#x3D;1）</li>
+<li>授权面板 URL 参数</li>
+</ul>
+<p>试用日写在同一份 AES 文件的 <code>installDate</code>。没有该字段时，回退 <code>~/Library/Preferences/abnerworks.Typora.plist</code> 的创建时间。</p>
+<h2 id="四种方式总览"><a href="#四种方式总览" class="headerlink" title="四种方式总览"></a>四种方式总览</h2><p><img src="/2026/09/12/Typora%E7%A0%B4%E8%A7%A3/fig-methods.png" srcset="/img/loading.gif" lazyload alt="四种绕过"></p>
+<p>P0 任意一条就能打穿授权。方式四只续试用钟。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>改什么</th>
+<th>范围</th>
+<th>持久</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一、DYLD 注入</td>
+<td>hook 两个 ObjC 方法</td>
+<td>副本进程</td>
+<td>否</td>
+</tr>
+<tr>
+<td>二、伪造本地文件</td>
+<td>AES 字典写入 email+license</td>
+<td>当前用户所有 Typora</td>
+<td>是</td>
+</tr>
+<tr>
+<td>三、二进制补丁</td>
+<td>hasLicense 恒真、cannotContonueUse: 恒假</td>
+<td>副本二进制</td>
+<td>是（对这份副本）</td>
+</tr>
+<tr>
+<td>四、重置试用</td>
+<td>删隐藏文件 + 重写 plist 创建时间</td>
+<td>当前用户试用钟</td>
+<td>再 20 天</td>
+</tr>
+</tbody></table>
+<h2 id="方式一-DYLD-注入"><a href="#方式一-DYLD-注入" class="headerlink" title="方式一　DYLD 注入"></a>方式一　DYLD 注入</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>Hardened Runtime 默认会丢掉 <code>DYLD_*</code> 环境变量。但这份官方 entitlements 明确写了：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">com<span class="hljs-selector-class">.apple</span><span class="hljs-selector-class">.security</span><span class="hljs-selector-class">.cs</span>.allow-dyld-environment-variables<br></code></pre></td></tr></table></figure>
+
+<p>所以 <code>DYLD_INSERT_LIBRARIES</code> 能进进程。库存公证包仍有 <strong>Library Validation</strong>：异 Team 的 dylib 会被拒。完整链是：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gauss">复制 .app<br>  →  entitlements 再开 <span class="hljs-keyword">disable</span>-<span class="hljs-keyword">library</span>-validation<br>  →  ad-hoc 重签<br>  →  DYLD_INSERT_LIBRARIES=hook.dylib 启动<br></code></pre></td></tr></table></figure>
+
+<p><code>allow-dyld-environment-variables</code> 是原包自己放的；<code>disable-library-validation</code> 是后加的。两条都要。</p>
+<p>注入之后只换两个 IMP，不改序列号、不碰 AES 文件、不需要 RSA 私钥：</p>
+<ul>
+<li><code>-[LicenseManager hasLicense]</code> → 恒 <code>YES</code></li>
+<li><code>-[LicenseManager cannotContonueUse:]</code> → 恒 <code>NO</code></li>
+</ul>
+<p>顺手把 ivar <code>_hasLicense</code> 写成 <code>@YES</code>，再发通知让 WebView 跑 fillLicense 那串 JS，关于窗口也会变成已激活外观。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol>
+<li>从 DMG 拷一份 <code>Typora.app</code>，不要动 <code>/Applications</code> 里正在用的那份。</li>
+<li>原 entitlements 导出后补上：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>com.apple.security.cs.disable-library-validation<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">true</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>ad-hoc 重签：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">codesign --sign - --deep --force --entitlements ent.plist Typora.poc1.app<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>写一个 dylib，在 <code>constructor</code> 里 <code>method_setImplementation</code>。选择子必须用字符串，因为原方法名拼错了：</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">static</span> <span class="hljs-type">BOOL</span> hooked_hasLicense(<span class="hljs-type">id</span> <span class="hljs-keyword">self</span>, SEL _cmd) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">YES</span>;<br>&#125;<br><br><span class="hljs-keyword">static</span> <span class="hljs-type">BOOL</span> hooked_cannotContinue(<span class="hljs-type">id</span> <span class="hljs-keyword">self</span>, SEL _cmd, <span class="hljs-type">BOOL</span> force) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">NO</span>;<br>&#125;<br><br>SEL cannotSel = <span class="hljs-built_in">NSSelectorFromString</span>(<span class="hljs-string">@&quot;cannotContonueUse:&quot;</span>);<br>method_setImplementation(class_getInstanceMethod(cls, <span class="hljs-keyword">@selector</span>(hasLicense)),<br>                         (IMP)hooked_hasLicense);<br>method_setImplementation(class_getInstanceMethod(cls, cannotSel),<br>                         (IMP)hooked_cannotContinue);<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>启动：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">DYLD_INSERT_LIBRARIES=./hook.dylib \<br>TYPORA_POC_LOG=/tmp/typora_poc1_hook.<span class="hljs-built_in">log</span> \<br>open -a Typora.poc1.app<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>对照：同一份 dylib 插进<strong>未重签的库存公证包</strong>，Library Validation 会挡住，hook 日志不应出现。</li>
+</ol>
+<p>确认：日志里有「已替换 hasLicense &#x2F; cannotContonueUse:」，随后有 <code>hasLicense 被调用 → 强制 YES</code>。菜单 Help → License 不再催激活。试用没过期时功能上本来就能用，<strong>以日志和过期后是否锁新标签为准</strong>。</p>
+<h2 id="方式二-伪造本地授权文件"><a href="#方式二-伪造本地授权文件" class="headerlink" title="方式二　伪造本地授权文件"></a>方式二　伪造本地授权文件</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>这是最能说明「启动不验签」的一条。</p>
+<p><code>readLicenseInfo</code> 启动时：</p>
+<ol>
+<li>读 <code>~/Library/Application Support/abnerworks.Typora/.&lt;fingerprint&gt;</code></li>
+<li>AES-256-ECB 解密，密钥 <code>SHA256(IOPlatformUUID + &quot;typora-license&quot;)</code></li>
+<li><code>NSKeyedUnarchiver</code> 成字典</li>
+<li><strong>只要同时有 <code>email</code> 和 <code>license</code> 两个 key，<code>_hasLicense = YES</code></strong></li>
+<li><strong>这里不调用 <code>verifySig:</code></strong></li>
+</ol>
+<p>RSA 只出现在联网&#x2F;离线激活的写入路径。持久化文件没有完整性，本机可以按同样算法重加密。</p>
+<p>占位内容故意一眼假即可，不必是服务器签过的码，客户端启动也不再拿去验：</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">email    poc-verify<span class="hljs-meta">@local</span>.test<br><span class="hljs-meta">license</span>  LLLLLL-LLLLLL-LLLLLL-LLLLLL<br></code></pre></td></tr></table></figure>
+
+<p>后一个串能过客户端 <code>quickValidateLicense:</code> 的字母表和 checksum，服务器不会签它。对方式二无所谓，因为根本不走服务器。</p>
+<h3 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h3><ol>
+<li>取本机 UUID：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ioreg -rd1 -c IOPlatformExpertDevice | grep IOPlatformUUID<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>算指纹和 AES key：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> base64, hashlib, re<br><br>uuid = <span class="hljs-string">&quot;……&quot;</span>  <span class="hljs-comment"># IOPlatformUUID</span><br>fp = <span class="hljs-string">&quot;a&quot;</span>.join(re.split(<span class="hljs-string">r&quot;[/=+\-]&quot;</span>, base64.b64encode(hashlib.sha256(uuid.encode()).digest()).decode()[:<span class="hljs-number">10</span>]))<br>key = hashlib.sha256((uuid + <span class="hljs-string">&quot;typora-license&quot;</span>).encode()).digest()<br><span class="hljs-comment"># 文件：~/Library/Application Support/abnerworks.Typora/.&lt;fp&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>构造 NSKeyedArchiver 字典，至少包含 <code>email</code>、<code>license</code>，建议保留原来的 <code>installDate</code>。</li>
+<li><code>CCCrypt</code> AES-256-ECB PKCS7 加密后覆盖隐藏文件。写之前先备份。</li>
+<li><code>pkill Typora</code> 再打开，避免热进程把旧状态写回。</li>
+<li>Help → License &#x2F; 关于，邮箱和序列号应是上面那对占位符。</li>
+</ol>
+<p>对照：把备份盖回去，字典里如果只剩 <code>installDate</code>，客户端会当成未授权。</p>
+<p>副作用：改的是<strong>当前用户</strong>的 Application Support，<code>/Applications/Typora.app</code> 和任何副本都会读这份文件。验证完必须还原。</p>
+<h2 id="方式三-二进制补丁"><a href="#方式三-二进制补丁" class="headerlink" title="方式三　二进制补丁"></a>方式三　二进制补丁</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>授权强制点收在两个 ObjC 方法里，函数体很短，适合直接改字节。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>原语义</th>
+<th>补丁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-[LicenseManager hasLicense]</code></td>
+<td>读 ivar <code>_hasLicense</code></td>
+<td><code>return 1</code></td>
+</tr>
+<tr>
+<td><code>-[LicenseManager cannotContonueUse:]</code></td>
+<td>无授权且试用 &lt; 1 天则拦截</td>
+<td><code>return 0</code></td>
+</tr>
+</tbody></table>
+<p>arm64 上 <code>hasLicense</code> 整函数 20 字节。原逻辑：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs llvm">ldr <span class="hljs-keyword">x</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> [<span class="hljs-keyword">x</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-variable">#0</span><span class="hljs-keyword">x</span><span class="hljs-number">18</span>]     <span class="hljs-comment">; _hasLicense</span><br>cbz <span class="hljs-keyword">x</span><span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-number">+8</span>              <span class="hljs-comment">; nil → YES</span><br>b   -[NSNumber boolValue]<br>mov w<span class="hljs-number">0</span><span class="hljs-punctuation">,</span> <span class="hljs-variable">#1</span><br><span class="hljs-keyword">ret</span><br></code></pre></td></tr></table></figure>
+
+<p>改成：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-keyword">mov</span> w0, <span class="hljs-meta">#1</span><br><span class="hljs-keyword">ret</span><br><span class="hljs-keyword">nop</span><br><span class="hljs-keyword">nop</span><br><span class="hljs-keyword">nop</span><br></code></pre></td></tr></table></figure>
+
+<p>universal 二进制两片都要改。只改 arm64 的话，Rosetta 跑 x86_64 仍是旧逻辑。</p>
+<p>补丁后 CDHash 对不上，必须：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">codesign --sign - --deep --force Typora.poc3.app<br></code></pre></td></tr></table></figure>
+
+<p>这就是「改字节 + 重签」。Gatekeeper 第一次会提示，点一次仍可跑。没有运行时完整性校验，程序不会因为自己被 ad-hoc 重签而拒绝工作。</p>
+<h3 id="过程-2"><a href="#过程-2" class="headerlink" title="过程"></a>过程</h3><ol>
+<li>从库存 DMG 再拷一份副本（不要和方式一的注入副本混用）。</li>
+<li>用特征码定位，不要写死文件偏移。出现 0 次或多次都拒绝写入。</li>
+<li>对 <code>Typora.app/Contents/MacOS/Typora</code> 的 arm64、x86_64 两 slice 分别打补丁。</li>
+<li>ad-hoc 重签整个 <code>.app</code>。</li>
+<li>打开副本。<code>codesign -dv</code> 应是 <code>Signature=adhoc</code>，不再是 <code>Abner Lee</code>。</li>
+</ol>
+<p>用 otool 直接看入口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">otool -tv -<span class="hljs-built_in">arch</span> arm64 \<br>  -p <span class="hljs-string">&#x27;-[LicenseManager hasLicense]&#x27;</span> \<br>  Typora.poc3.app/Contents/MacOS/Typora<br></code></pre></td></tr></table></figure>
+
+<p>开头应变成 <code>mov w0, #0x1; ret</code>。试用过期后，未补丁进程锁新标签，补丁进程不锁。</p>
+<h2 id="方式四-重置-20-天试用"><a href="#方式四-重置-20-天试用" class="headerlink" title="方式四　重置 20 天试用"></a>方式四　重置 20 天试用</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>未授权时 <code>cannotContonueUse:</code> 用：</p>
+<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dns">剩余天数 = <span class="hljs-number">20</span> - <span class="hljs-punctuation">(</span>今天 - installDate<span class="hljs-punctuation">)</span><br>剩余 &lt; <span class="hljs-number">1</span>  → 拦截<br></code></pre></td></tr></table></figure>
+
+<p><code>installDate</code> 在 AES 授权文件里。文件缺失该字段时，回退到 Preferences plist 的 <strong>birthtime</strong>。</p>
+<p>只删 <code>.&lt;fingerPrint&gt;</code> 不够：plist 创建时间还在，试用不会回到 20。两条都要动。</p>
+<p>这不是授权绕过，是试用钟。过了 20 天还可以再来一次，除非以后改成 Keychain + 首次网络时间交叉。</p>
+<h3 id="过程-3"><a href="#过程-3" class="headerlink" title="过程"></a>过程</h3><p>当前还在试用期内的话，直接把日期改成「今天」，界面几乎看不出差别。要亲眼看锁 &#x2F; 解锁：</p>
+<ol>
+<li>先把 <code>installDate</code> 写成 21 天前，并去掉 <code>email</code> &#x2F; <code>license</code>（否则会被当成已授权，试用锁走不到）。</li>
+<li>打开 Typora，应出现试用结束，新标签 &#x2F; 空文档被拦。</li>
+<li>删掉 Application Support 里那份隐藏授权文件。</li>
+<li>把 <code>~/Library/Preferences/abnerworks.Typora.plist</code> 按原字节写回一遍，让 birthtime 变成现在（内容可以不变）。macOS 上 <code>cp</code> 往往保留 birthtime，需要删了再写，或用 <code>SetFile</code>。</li>
+<li>再打开，程序会自己把授权文件写回来，<code>installDate</code> 接近现在，剩余约 20 天。</li>
+</ol>
+<p>建议先备份隐藏文件和 plist，看完立刻还原。官方安装同样读这两处。</p>
+<h2 id="对照：什么没用"><a href="#对照：什么没用" class="headerlink" title="对照：什么没用"></a>对照：什么没用</h2><table>
+<thead>
+<tr>
+<th>手法</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>只改 JS <code>hasLicense</code></td>
+<td>试用期内看起来激活了；过期后 native 仍锁功能</td>
+</tr>
+<tr>
+<td>按校验和生成序列号骗服务器</td>
+<td>checksum 可算，<strong>没有私钥过不了服务端</strong></td>
+</tr>
+<tr>
+<td>自签激活服务器 &#x2F; 伪造离线 JSON</td>
+<td>要换嵌在包里的 RSA 公钥，等于还得做方式三</td>
+</tr>
+<tr>
+<td>Frida &#x2F; lldb 改 <code>_hasLicense</code></td>
+<td>本次进程有效，和方式一同类，重启失效</td>
+</tr>
+</tbody></table>
+<h2 id="根因"><a href="#根因" class="headerlink" title="根因"></a>根因</h2><ol>
+<li><strong>校验与强制分离。</strong> 密码学只出现在激活响应；强制点是内存布尔 + 本地文件两个字符串 key。</li>
+<li><strong>本地密文无完整性。</strong> AES-ECB + 可导出密钥，等于混淆。</li>
+<li><strong>Hardened Runtime 放行 DYLD insert。</strong> 注入改 ObjC 方法是官方允许的加载路径。</li>
+<li><strong>前端授权位可写。</strong> 增加「看起来激活了」的误判，不构成防护。</li>
+<li><strong>无运行时完整性。</strong> 不校验自己的 CDHash，被 ad-hoc 重签照样跑。</li>
+</ol>
+<p>若这套逻辑要上线，最低限度是：每次启动用嵌入公钥验签持久化 payload（email &#x2F; license &#x2F; device &#x2F; exp）；关掉 <code>allow-dyld-environment-variables</code>；AES 换成 AEAD，key 进 Keychain；试用时间不要只靠一个可删文件的时间戳。客户端 DRM 对有二进制能力的人做不到绝对安全，但当前这套连业余静态分析都挡不住。</p>
+<p>样本和汇编都基于 1.14.9。换版本后偏移和特征码会变，判定结构——启动不验签、两个 ObjC 布尔——才是可以跟着看的东西。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/reverse/" class="print-no-link">#reverse</a>
+      
+        <a href="/tags/macOS/" class="print-no-link">#macOS</a>
+      
+        <a href="/tags/Typora/" class="print-no-link">#Typora</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Typora破解</div>
+      <div>https://noeplex.com/2026/09/12/Typora破解/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>To1y5</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年9月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/14/%E9%80%9F%E6%88%90%E8%93%9D%E6%A1%A5%E7%9C%81%E4%B8%80/" title="速成蓝桥省一">
+                        <span class="hidden-mobile">速成蓝桥省一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
